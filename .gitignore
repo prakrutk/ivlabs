@@ -50,3 +50,64 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+printf("we reqiure %d of %d length",t2,a[i][0]);
+#include<stdio.h>
+void main(()
+{
+      int n,m,i,j,t1,t2,t3;
+      int a[100][3];
+      printf("Enter the length of rod \n");
+      scanf("%d",&n);
+      printf("Enter the number of sublengths \n");
+      scanf("%d",&m);
+      for(i=0;i<m;i++)
+      {
+            printf("Enter the length \n");
+            scanf("%d",&a[i][0]);
+            printf("Enter its price \n");
+            scanf("%d",&a[i][1]);
+            a[i][2]=a[i][1]/a[i][0];
+      }
+      for(i=0;i<m-1;i++)
+      {
+            for(j=0;j<m-1-i;j++)
+            {
+                  if(a[j][2]<a[j+1][2])
+                  {
+                        t1=a[j+1][2];
+                        a[j+1][2]=a[j][2];
+                        a[j][2]=t1;
+                        t2=a[j+1][1];
+                        a[j+1][1]=a[j][1];
+                        a[j][1]=t2;
+                        t3=a[j+1][0];
+                        a[j+1][0]=a[j][0];
+                        a[j][0]=t3;
+                   }
+              }
+        }
+        t3=0;
+        for(i=0;i<m;i++)
+        {
+              if(a[i][0]<n)
+              {
+                    t1=n%a[i][0];
+                    if(t1<n)
+                    {
+                          t2=n/a[i][0];
+                          printf("we reqiure %d of %d length",t2,a[i][0]);
+                          t3=t3+(t2*a[i][1]);
+                          n=t1;
+                          if(n==0)
+                          {
+                                break;
+                          }
+                    }
+              }
+        }
+        if(n!=0)
+        {
+              printf("We require an extra rod of length %d",n);
+        }
+        printf("The total price is %d",t3);
+}                          
