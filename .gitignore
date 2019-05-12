@@ -50,7 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-printf("we reqiure %d of %d length",t2,a[i][0]);
+
 #include<stdio.h>
 void main(()
 {
